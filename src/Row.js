@@ -3,19 +3,20 @@ import axios from './axios';
 
 function Row({ title, fetchUrl }) {
   const [movies, setMovies] = useState([]);
-
   // need code that runs on specific condition or variable
   useEffect(() => {
     // when page loads- make the request
     // if the brackets are blank it means 'run ONCE when the row loads'
     async function fetchData() {
       const request = await axios.get(fetchUrl);
-      console.log(request);
+      // console.log(request.data.results);
+      setMovies(request.data.results)
       return request;
     }
     fetchData();
-  }, []);
+  }, [fetchUrl]);
 
+  console.log(movies);
 
   return (
     <div>
