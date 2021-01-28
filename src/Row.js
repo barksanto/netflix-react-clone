@@ -26,7 +26,7 @@ function Row({ title, fetchUrl }) {
     <div className="row">
       {/* title */}
       <h2>{title}</h2>
-      <div className="row-posters">
+      <div className={"row-posters"}>
         {/* several row-posters */}
         {movies.map(movie => (
           <img
