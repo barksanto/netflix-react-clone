@@ -4,7 +4,7 @@ import './Row.css';
 
 const imageBaseUrl = "https://image.tmdb.org/t/p/original";
 
-function Row({ title, fetchUrl }) {
+function Row({ title, fetchUrl, big }) {
   const [movies, setMovies] = useState([]);
 
   // need code that runs on specific condition or variable
@@ -26,11 +26,11 @@ function Row({ title, fetchUrl }) {
     <div className="row">
       {/* title */}
       <h2>{title}</h2>
-      <div className={"row-posters"}>
+      <div className={"row-posters"} >
         {/* several row-posters */}
         {movies.map(movie => (
           <img
-            src={`${imageBaseUrl}${movie.poster_path}`}
+            src={`${imageBaseUrl}${big ? movie.backdrop_path : movie.poster_path}`}
             alt={movie.name}
             className="row-poster"
             key={movie.id} />
