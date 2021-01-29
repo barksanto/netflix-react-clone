@@ -29,7 +29,7 @@ function Banner() {
     < header className="banner" style={bannerStyle}>
       <div className="banner-contents">
         {/* title */}
-        <h1>{movie.name}</h1>
+        <h1>{movie?.name || movie?.title || movie?.original_name}</h1>
         {/* div with 2 buttons play+my list */}
         {/* description */}
       </div>
