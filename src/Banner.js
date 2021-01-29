@@ -19,14 +19,23 @@ function Banner() {
   }, []);
 
   console.log(movie)
-
+  const bannerStyle = {
+    backgroundSize: "cover",
+    backgroundImage: `url("https://image.tmdb.org/t/p/original/${movie?.backdrop_path}")`,
+    backgroundPosition: "center center",
+    height: "20vh"
+  }
   return (
-    <header> {/* This header will have a background image */}
-      {/* title */}
-      {/* div with 2 buttons play+my list */}
-      {/* description */}
+    < header className="banner" style={bannerStyle}>
+      <div className="banner-contents">
+        {/* title */}
+        <h1>{movie.name}</h1>
+        {/* div with 2 buttons play+my list */}
+        {/* description */}
+      </div>
 
-    </header>
+
+    </header >
   )
 }
 
