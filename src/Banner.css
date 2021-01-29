@@ -45,3 +45,14 @@
   color: black;
   transition: all .4s;
 }
+
+/* this linear gradient is at the bottom of the banner for the image to fade into the rest of the page */
+.banner-fade-bottom{
+  height: 7.4rem;
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(37, 37, 37, 0.61),
+    #111
+  )
+}
