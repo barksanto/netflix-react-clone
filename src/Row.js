@@ -20,7 +20,8 @@ function Row({ title, fetchUrl, big }) {
     fetchData();
   }, [fetchUrl]);
 
-  console.log(movies);
+  // console.log(movies);
+
 
   return (
     <div className="row">
@@ -30,10 +31,11 @@ function Row({ title, fetchUrl, big }) {
         {/* several row-posters */}
         {movies.map(movie => (
           <img
-            src={`${imageBaseUrl}${big ? movie.backdrop_path : movie.poster_path}`}
+            src={`${imageBaseUrl}${big ? movie.poster_path : movie.backdrop_path}`}
             alt={movie.name}
             className="row-poster"
-            key={movie.id} />
+            key={movie.id}
+          />
         ))}
       </div>
       {/* container -> posters - referring to each film that you see */}
