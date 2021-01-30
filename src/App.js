@@ -11,6 +11,7 @@ function App() {
 
     <div className="App">
       {/* Navbar Component */}
+      <Nav/>
       <Banner />
       {/* Banner Component */}
       <Row title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginals} big /> {/* big={true} */}
