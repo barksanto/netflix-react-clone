@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import axios from './axios';
 import './Row.css';
+import YouTube from "react-youtube";
+import movieTrailer from 'movie-trailer';
 
 const imageBaseUrl = "https://image.tmdb.org/t/p/original";
 
 function Row({ title, fetchUrl, big }) {
   const [movies, setMovies] = useState([]);
+  const [trailerUrl, setTrailerUrl] = useState("");
 
   // need code that runs on specific condition or variable
   useEffect(() => {
@@ -21,7 +24,25 @@ function Row({ title, fetchUrl, big }) {
   }, [fetchUrl]);
 
   // console.log(movies);
+  const opts = {
+    height: "390",
+    width: "100%",
+    playerVars: {
+      autoplay: 1,
+    },
+  };
 
+  const handleClick = (movie) => {
+    if (trailerUrl) {
+      setTrailerUrl('');
+    } else {
+      movieTrailer(movie?.name || "")
+        .then((url) => {
+          const urlParams = new URLSearchParams(new URL(url).search)
+          setTrailerUrl(urlParams.get('v'));
+        }).catch(error => console.log(error));
+    }
+  }
 
   return (
     <div className="row">
@@ -31,6 +52,7 @@ function Row({ title, fetchUrl, big }) {
         {/* several row-posters */}
         {movies.map(movie => (
           <img
+            onClick={() => handleClick(movie)}
             src={`${imageBaseUrl}${big ? movie.poster_path : movie.backdrop_path}`}
             alt={movie.name}
             className="row-poster"
@@ -38,7 +60,7 @@ function Row({ title, fetchUrl, big }) {
           />
         ))}
       </div>
-      {/* container -> posters - referring to each film that you see */}
+      {trailerUrl && <YouTube videoId={trailerUrl} opts={opts} />}
     </div>
   )
 }
